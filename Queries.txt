@@ -1,0 +1,229 @@
+=========================== QUERY Menghitung Jumlah jk ===========================
+CREATE TABLE jumlah AS
+SELECT jk, COUNT(*) AS jml FROM daftar_nama
+GROUP BY jk;
+
+SELECT * FROM jumlah
+
+
+=========================== MEMBUAT TRIGGER TAMBAH ORANG ===========================
+DELIMITER //
+CREATE OR REPLACE TRIGGER tambah_orang
+AFTER INSERT ON daftar_nama
+FOR EACH ROW
+BEGIN
+UPDATE jumlah SET jml = jml + 1
+WHERE jk = NEW.jk;
+END
+//
+
+DELIMITER ;
+INSERT INTO daftar_nama (nama, jk, alamat, tempat_lahir, tanggal_lahir) VALUES ('Yesaya','P','Banjarharjo','Tegal','2003-06-10');
+SELECT * FROM jumlah;
+
+=========================== MEMBUAT TRIGGER KURANG ORANG ===========================
+DELIMITER //
+CREATE OR REPLACE TRIGGER kurang_orang
+AFTER DELETE ON daftar_nama
+FOR EACH ROW
+BEGIN
+UPDATE jumlah SET jml = jml -1
+WHERE jk = OLD.jk;
+END
+//
+
+DELIMITER ;
+DELETE FROM daftar_nama WHERE nama = 'Yesaya';
+SELECT * FROM jumlah;
+
+=========================== QUERY Menghitung Jumlah jk ===========================
+CREATE TABLE jumlah AS
+SELECT jk, COUNT(*) AS jml FROM daftar_nama
+GROUP BY jk;
+
+SELECT * FROM jumlah
+
+
+=========================== MEMBUAT TRIGGER TAMBAH ORANG ===========================
+DELIMITER //
+CREATE OR REPLACE TRIGGER tambah_orang
+AFTER INSERT ON daftar_nama
+FOR EACH ROW
+BEGIN
+UPDATE jumlah SET jml = jml + 1
+WHERE jk = NEW.jk;
+END
+//
+
+DELIMITER ;
+INSERT INTO daftar_nama (nama, jk, alamat, tempat_lahir, tanggal_lahir) VALUES ('Yesaya','P','Banjarharjo','Tegal','2003-06-10');
+SELECT * FROM jumlah;
+
+=========================== MEMBUAT TRIGGER KURANG ORANG ===========================
+DELIMITER //
+CREATE OR REPLACE TRIGGER kurang_orang
+AFTER DELETE ON daftar_nama
+FOR EACH ROW
+BEGIN
+UPDATE jumlah SET jml = jml -1
+WHERE jk = OLD.jk;
+END
+//
+
+DELIMITER ;
+DELETE FROM daftar_nama WHERE nama = 'Yesaya';
+SELECT * FROM jumlah;
+
+
+=========================== QUERY Menghitung Jumlah jk ===========================
+CREATE TABLE jumlah AS
+SELECT jk, COUNT(*) AS jml FROM daftar_nama
+GROUP BY jk;
+
+SELECT * FROM jumlah
+
+
+=========================== MEMBUAT TRIGGER TAMBAH ORANG ===========================
+DELIMITER //
+CREATE OR REPLACE TRIGGER tambah_orang
+AFTER INSERT ON daftar_nama
+FOR EACH ROW
+BEGIN
+UPDATE jumlah SET jml = jml + 1
+WHERE jk = NEW.jk;
+END
+//
+
+DELIMITER ;
+INSERT INTO daftar_nama (nama, jk, alamat, tempat_lahir, tanggal_lahir) VALUES ('Yesaya','P','Banjarharjo','Tegal','2003-06-10');
+SELECT * FROM jumlah;
+
+=========================== MEMBUAT TRIGGER KURANG ORANG ===========================
+DELIMITER //
+CREATE OR REPLACE TRIGGER kurang_orang
+AFTER DELETE ON daftar_nama
+FOR EACH ROW
+BEGIN
+UPDATE jumlah SET jml = jml -1
+WHERE jk = OLD.jk;
+END
+//
+
+DELIMITER ;
+DELETE FROM daftar_nama WHERE nama = 'Yesaya';
+SELECT * FROM jumlah;
+
+
+
+=========================== QUERY Menghitung Jumlah jk ===========================
+CREATE TABLE jumlah AS
+SELECT jk, COUNT(*) AS jml FROM daftar_nama
+GROUP BY jk;
+
+SELECT * FROM jumlah
+
+
+=========================== MEMBUAT TRIGGER TAMBAH ORANG ===========================
+DELIMITER //
+CREATE OR REPLACE TRIGGER tambah_orang
+AFTER INSERT ON daftar_nama
+FOR EACH ROW
+BEGIN
+UPDATE jumlah SET jml = jml + 1
+WHERE jk = NEW.jk;
+END
+//
+
+DELIMITER ;
+INSERT INTO daftar_nama (nama, jk, alamat, tempat_lahir, tanggal_lahir) VALUES ('Yesaya','P','Banjarharjo','Tegal','2003-06-10');
+SELECT * FROM jumlah;
+
+=========================== MEMBUAT TRIGGER KURANG ORANG ===========================
+DELIMITER //
+CREATE OR REPLACE TRIGGER kurang_orang
+AFTER DELETE ON daftar_nama
+FOR EACH ROW
+BEGIN
+UPDATE jumlah SET jml = jml -1
+WHERE jk = OLD.jk;
+END
+//
+
+DELIMITER ;
+DELETE FROM daftar_nama WHERE nama = 'Yesaya';
+SELECT * FROM jumlah;=========================== QUERY Menghitung Jumlah jk ===========================
+CREATE TABLE jumlah AS
+SELECT jk, COUNT(*) AS jml FROM daftar_nama
+GROUP BY jk;
+
+SELECT * FROM jumlah
+
+
+=========================== MEMBUAT TRIGGER TAMBAH ORANG ===========================
+DELIMITER //
+CREATE OR REPLACE TRIGGER tambah_orang
+AFTER INSERT ON daftar_nama
+FOR EACH ROW
+BEGIN
+UPDATE jumlah SET jml = jml + 1
+WHERE jk = NEW.jk;
+END
+//
+
+DELIMITER ;
+INSERT INTO daftar_nama (nama, jk, alamat, tempat_lahir, tanggal_lahir) VALUES ('Yesaya','P','Banjarharjo','Tegal','2003-06-10');
+SELECT * FROM jumlah;
+
+=========================== MEMBUAT TRIGGER KURANG ORANG ===========================
+DELIMITER //
+CREATE OR REPLACE TRIGGER kurang_orang
+AFTER DELETE ON daftar_nama
+FOR EACH ROW
+BEGIN
+UPDATE jumlah SET jml = jml -1
+WHERE jk = OLD.jk;
+END
+//
+
+DELIMITER ;
+DELETE FROM daftar_nama WHERE nama = 'Yesaya';
+SELECT * FROM jumlah;
+
+
+=========================== TRIGGER MEMANTAU DATA AKTIVITAS ===========================
+CREATE TABLE log_aktivitas(nomor INT PRIMARY KEY AUTO_INCREMENT, tanggal DATE DEFAULT NOW(),
+tanggal DATE DEFAULT NOW(),
+tabel VARCHAR(20),
+aktivitas VARCHAR(10),
+keterangan VARCHAR(200))
+
+DELIMITER //
+CREATE OR REPLACE TRIGGER tambah_orang
+AFTER INSERT ON daftar_nama
+FOR EACH ROW
+BEGIN
+UPDATE jumlah SET jml = jml +1 WHERE jk = NEW.jk;
+INSERT INTO log_aktivitas (tabel, aksi, keterangan)
+VALUES ('daftar_nama','insert',
+CONCAT('masuk data baru dengan nama', NEW.nama));
+END;
+//
+
+DELIMITER ;
+DESC log_aktivitas;
+
+
+
+PERBAIKAN DATABASE MY SQL DI PRINT;
+
+
+NEXT TUGAS
+AFTER INSERT
+\\\\
+
+\\\\/\
+AFTER DELETE
+AFTER DELETE
+
+
+
